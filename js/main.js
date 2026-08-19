@@ -63,7 +63,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 document.querySelectorAll('#githubLink, #githubContact, #githubFooter').forEach(el => {
     el.addEventListener('click', (e) => {
         e.preventDefault();
-        window.open('https://github.com/ankitmahato', '_blank');
+        window.open('https://github.com/ankitmahato54', '_blank');
     });
 });
 
@@ -71,7 +71,7 @@ document.querySelectorAll('#githubLink, #githubContact, #githubFooter').forEach(
 document.querySelectorAll('#linkedinLink, #linkedinContact, #linkedinFooter').forEach(el => {
     el.addEventListener('click', (e) => {
         e.preventDefault();
-        window.open('https://linkedin.com/in/ankitmahato', '_blank');
+        window.open('https://www.linkedin.com/in/ankitmahato1/', '_blank');
     });
 });
 
@@ -79,7 +79,7 @@ document.querySelectorAll('#linkedinLink, #linkedinContact, #linkedinFooter').fo
 document.querySelectorAll('#emailLink, #emailContact, #emailFooter').forEach(el => {
     el.addEventListener('click', (e) => {
         e.preventDefault();
-        window.location.href = 'mailto:ankit.mahato@gmail.com';
+        window.location.href = 'mailto:ankitmahato54@gmail.com';
     });
 });
 
@@ -89,15 +89,6 @@ document.getElementById('terminalLink')?.addEventListener('click', (e) => {
     document.getElementById('terminalWidgetContainer').scrollIntoView({
         behavior: 'smooth'
     });
-});
-
-// ============================================
-// 5. DOWNLOAD RESUME
-// ============================================
-document.getElementById('downloadResumeBtn')?.addEventListener('click', (e) => {
-    e.preventDefault();
-    // Replace with actual resume PDF link
-    window.open('resume.pdf', '_blank');
 });
 
 // ============================================
@@ -120,7 +111,7 @@ document.getElementById('contactForm')?.addEventListener('submit', (e) => {
         // Open mail with pre-filled content
         const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
         const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-        window.location.href = `mailto:ankit.mahato@gmail.com?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:ankitmahato54@gmail.com?subject=${subject}&body=${body}`;
         
         // Clear form
         form.reset();
@@ -149,3 +140,4 @@ if (toggleBtn && terminalContainer) {
         }
     });
 }
+
