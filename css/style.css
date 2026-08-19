@@ -562,8 +562,22 @@ body {
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
+}
+
+/* Mobile: 2 columns on tablet */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile: 1 column on phone */
+@media (max-width: 480px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .skill-card {
@@ -615,16 +629,31 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    align-items: center;
+    padding: 4px 0;
 }
 
 .learning-tag {
-    padding: 6px 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px 6px 12px;
     background: rgba(14, 165, 233, 0.08);
     border: 1px solid rgba(14, 165, 233, 0.12);
     border-radius: 20px;
     font-size: 13px;
     color: var(--azure-500);
     transition: all 0.3s ease;
+    line-height: 1.4;
+}
+
+
+.learning-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .learning-tag:hover {
@@ -738,14 +767,6 @@ body {
     position: relative;
 }
 
-.project-card ul li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: #10B981;
-    font-weight: 700;
-}
-
 .project-tags {
     display: flex;
     flex-wrap: wrap;
@@ -822,53 +843,6 @@ body {
     border-radius: 8px;
 }
 
-/* ============================================
-   TECHNICAL DASHBOARD
-   ============================================ */
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-}
-
-.dashboard-item {
-    background: var(--bg-card);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    padding: 16px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.dashboard-label {
-    font-size: 13px;
-    color: var(--text-secondary);
-}
-
-.dashboard-status {
-    font-size: 12px;
-    font-weight: 600;
-    padding: 2px 12px;
-    border-radius: 12px;
-}
-
-.dashboard-status.completed {
-    color: #10B981;
-    background: rgba(16, 185, 129, 0.1);
-}
-
-.dashboard-status.in-progress {
-    color: #F59E0B;
-    background: rgba(245, 158, 11, 0.1);
-}
-
-.dashboard-number {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-primary);
-}
 
 /* ============================================
    CONTACT
@@ -978,6 +952,145 @@ body {
 }
 
 /* ============================================
+   STATUS BADGES - For Projects & Labs
+   ============================================ */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 14px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* In Progress - ORANGE */
+.status-badge.in-progress {
+    background: rgba(245, 158, 11, 0.15);
+    color: #F59E0B;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+/* Planned - AZURE BLUE */
+.status-badge.planned {
+    background: rgba(14, 165, 233, 0.1);
+    color: #0EA5E9;
+    border: 1px solid rgba(14, 165, 233, 0.15);
+}
+
+/* ============================================
+   PROJECTS & LABS
+   ============================================ */
+.section-subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.project-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 24px 28px;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(14, 165, 233, 0.2);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+}
+
+.project-icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(14, 165, 233, 0.06);
+    border: 1px solid rgba(14, 165, 233, 0.08);
+    margin-bottom: 14px;
+    flex-shrink: 0;
+}
+
+.project-icon-wrapper svg {
+    width: 26px;
+    height: 26px;
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.project-header h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.project-description {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+    flex-grow: 1;
+}
+
+.project-topics {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+}
+
+.project-topics li {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 14px;
+    background: rgba(14, 165, 233, 0.06);
+    border: 1px solid rgba(14, 165, 233, 0.08);
+    border-radius: 12px;
+    font-size: 11px;
+    color: var(--azure-500);
+    text-align: center;
+    white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 .footer {
@@ -1039,7 +1152,6 @@ body {
     .certs-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -1072,7 +1184,6 @@ body {
     .projects-grid { grid-template-columns: 1fr; }
     
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .dashboard-grid { grid-template-columns: 1fr 1fr; }
     
     .contact-form { padding: 20px; }
     .contact-card { padding: 20px; }
@@ -1088,7 +1199,6 @@ body {
     
     .skills-grid { grid-template-columns: 1fr 1fr; }
     .stats-grid { grid-template-columns: 1fr 1fr; }
-    .dashboard-grid { grid-template-columns: 1fr 1fr; }
     
     .terminal-title { display: none; }
 }
@@ -1239,3 +1349,591 @@ body {
     /* Azure Blue (#0EA5E9) */
 }
 
+/* ============================================
+   CERTIFICATION ICONS - Azure Themed
+   ============================================ */
+.cert-icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: rgba(14, 165, 233, 0.06);
+    border: 1px solid rgba(14, 165, 233, 0.08);
+}
+
+.cert-icon-wrapper svg {
+    width: 28px;
+    height: 28px;
+}
+
+
+.cert-in-progress {
+    color: #F59E0B !important;
+    font-size: 13px;
+}
+
+.cert-status.completed {
+    color: #10B981 !important;
+}
+
+/* ============================================
+   GITHUB & CODING ACTIVITY
+   ============================================ */
+
+/* GitHub Section */
+.github-section {
+    margin-bottom: 48px;
+}
+
+/* GitHub Profile Stats */
+.github-profile-stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 24px;
+}
+
+.github-profile-stats {
+    display: flex;
+    gap: 40px;
+}
+
+.github-profile-stat {
+    text-align: center;
+}
+
+.github-profile-stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--azure-500);
+}
+
+.github-profile-stat-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* GitHub Graph */
+.github-graph-container {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+    min-height: 200px;
+}
+
+.contribution-graph {
+    width: 100%;
+    min-width: 600px;
+}
+
+.graph-months {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 8px;
+    padding-left: 36px;
+}
+
+.graph-month-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    width: 14px;
+    text-align: center;
+}
+
+.graph-grid {
+    display: grid;
+    grid-template-columns: 36px repeat(auto-fill, 14px);
+    gap: 3px;
+    align-items: start;
+}
+
+.graph-weekday-label {
+    font-size: 10px;
+    color: var(--text-secondary);
+    text-align: right;
+    padding-right: 8px;
+    line-height: 14px;
+    height: 14px;
+}
+
+.graph-cell {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.06);
+    transition: all 0.2s ease;
+    cursor: default;
+}
+
+.graph-cell:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 12px rgba(14, 165, 233, 0.3);
+}
+
+.graph-cell.invisible {
+    visibility: hidden;
+}
+
+/* Contribution levels */
+.graph-cell.level-0 { background: rgba(255, 255, 255, 0.05); }
+.graph-cell.level-1 { background: rgba(14, 165, 233, 0.2); }
+.graph-cell.level-2 { background: rgba(14, 165, 233, 0.4); }
+.graph-cell.level-3 { background: rgba(14, 165, 233, 0.65); }
+.graph-cell.level-4 { background: rgba(14, 165, 233, 0.9); }
+
+/* GitHub Stats */
+#githubStats {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.github-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.github-stat {
+    text-align: center;
+}
+
+.github-stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.github-stat-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* GitHub Error */
+.github-error-container {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.github-loading {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* GitHub Profile Button */
+.github-profile-btn-wrapper {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.github-profile-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+}
+
+.github-profile-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Coding Profiles Section */
+.coding-profiles-section {
+    margin-top: 40px;
+    border-top: 1px solid var(--glass-border);
+    padding-top: 40px;
+}
+
+.coding-profiles-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+.coding-profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.coding-profile-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 24px 28px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.coding-profile-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(14, 165, 233, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.coding-profile-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(14, 165, 233, 0.06);
+    border: 1px solid rgba(14, 165, 233, 0.08);
+    margin-bottom: 12px;
+    color: var(--azure-500);
+}
+
+.coding-profile-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.coding-profile-card h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.coding-profile-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+}
+
+.coding-profile-btn {
+    display: inline-block;
+    padding: 6px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--azure-500);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.coding-profile-btn:hover {
+    color: var(--text-primary);
+    background: rgba(14, 165, 233, 0.08);
+}
+
+.coding-profile-placeholder {
+    display: block;
+    font-size: 10px;
+    color: #F59E0B;
+    margin-top: 6px;
+    opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .github-profile-stats,
+    .github-stats {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .github-profile-stat-number {
+        font-size: 1.5rem;
+    }
+
+    .coding-profiles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .graph-grid {
+        grid-template-columns: 30px repeat(auto-fill, 12px);
+        gap: 2px;
+    }
+
+    .graph-weekday-label {
+        font-size: 9px;
+        height: 12px;
+        line-height: 12px;
+    }
+
+    .graph-cell {
+        width: 12px;
+        height: 12px;
+    }
+
+    .graph-months {
+        padding-left: 30px;
+    }
+
+    .graph-month-label {
+        font-size: 9px;
+        width: 12px;
+    }
+
+    .contribution-graph {
+        min-width: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contribution-graph {
+        min-width: 300px;
+    }
+
+    .graph-grid {
+        grid-template-columns: 24px repeat(auto-fill, 10px);
+        gap: 2px;
+    }
+
+    .graph-cell {
+        width: 10px;
+        height: 10px;
+    }
+
+    .graph-weekday-label {
+        font-size: 8px;
+        height: 10px;
+        line-height: 10px;
+        padding-right: 4px;
+    }
+
+    .graph-months {
+        padding-left: 24px;
+    }
+
+    .graph-month-label {
+        font-size: 8px;
+        width: 10px;
+    }
+
+    .github-profile-stats-container {
+        gap: 16px;
+    }
+
+    .github-profile-stat-number {
+        font-size: 1.2rem;
+    }
+
+    .github-profile-stat-label {
+        font-size: 11px;
+    }
+
+    .coding-profile-card {
+        padding: 16px 20px;
+    }
+}
+
+/* ============================================
+   PROFESSIONAL PROFILES
+   ============================================ */
+.profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.profile-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 32px 28px 28px;
+    text-align: center;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(14, 165, 233, 0.25);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+}
+
+.profile-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(14, 165, 233, 0.06);
+    border: 1px solid rgba(14, 165, 233, 0.08);
+    margin-bottom: 16px;
+    color: var(--azure-500);
+    transition: all 0.3s ease;
+}
+
+.profile-card:hover .profile-icon {
+    background: rgba(14, 165, 233, 0.12);
+    border-color: rgba(14, 165, 233, 0.2);
+}
+
+.profile-icon svg {
+    width: 30px;
+    height: 30px;
+}
+
+/* GitHub Icon - Different color to stand out */
+.github-icon svg {
+    fill: #0EA5E9;
+    color: #0EA5E9;
+}
+
+.leetcode-icon svg {
+    stroke: #0EA5E9;
+}
+
+.hackerrank-icon svg {
+    stroke: #0EA5E9;
+}
+
+.profile-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.profile-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.profile-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--azure-500);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.profile-btn:hover {
+    color: var(--text-primary);
+    background: rgba(14, 165, 233, 0.08);
+    transform: translateX(4px);
+}
+
+.profile-placeholder {
+    display: block;
+    font-size: 9px;
+    color: #F59E0B;
+    margin-top: 8px;
+    opacity: 0.5;
+    font-family: var(--font-mono);
+    letter-spacing: 0.5px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .profiles-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .profiles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .profile-card {
+        padding: 24px 20px 20px;
+    }
+
+    .profile-icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .profile-icon svg {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profiles-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .profile-card {
+        padding: 24px 20px 20px;
+        max-width: 320px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+/* ============================================
+   FORCE RESUME BUTTON TO SHOW
+   ============================================ */
+#downloadResumeBtn {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.hero-buttons {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    padding-top: 8px !important;
+}
+
+/* ============================================
+   PROFILE ICONS ROW - Hero Section
+   ============================================ */
+.profile-icons-row {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.profile-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #94A3B8;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.profile-icon-link:hover {
+    color: #0EA5E9;
+    transform: translateY(-2px);
+}
+
+.profile-icon-link svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    fill: none;
+}
+
+.profile-icon-link:first-child svg {
+    fill: currentColor;
+}
