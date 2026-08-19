@@ -1937,3 +1937,27 @@ body {
 .profile-icon-link:first-child svg {
     fill: currentColor;
 }
+
+/* ============================================
+   CONTACT FORM STATUS MESSAGES
+   ============================================ */
+.form-status {
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.form-success {
+    color: #10B981;
+    padding: 10px 14px;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 8px;
+}
+
+.form-error {
+    color: #EF4444;
+    padding: 10px 14px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 8px;
+}
