@@ -92,34 +92,59 @@ document.getElementById('terminalLink')?.addEventListener('click', (e) => {
 });
 
 // ============================================
-// 6. CONTACT FORM
+// 6. CONTACT FORM - Formspree Integration
 // ============================================
-document.getElementById('contactForm')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.querySelector('input[type="text"]')?.value || '';
-    const email = form.querySelector('input[type="email"]')?.value || '';
-    const message = form.querySelector('textarea')?.value || '';
+const contactForm = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const formStatus = document.getElementById('formStatus');
 
-    if (name && email && message) {
-        // Simple validation
-        if (!email.includes('@')) {
-            alert('Please enter a valid email address.');
-            return;
-        }
-
-        // Open mail with pre-filled content
-        const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-        window.location.href = `mailto:ankitmahato54@gmail.com?subject=${subject}&body=${body}`;
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
         
-        // Clear form
-        form.reset();
-        alert('Thank you for your message! I will get back to you soon.');
-    } else {
-        alert('Please fill in all fields.');
-    }
-});
+        // Disable button to prevent multiple submissions
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        formStatus.innerHTML = '';
+        
+        try {
+            const formData = new FormData(contactForm);
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                formStatus.innerHTML = `
+                    <div class="form-success">
+                        ✅ Thank you! Your message has been sent successfully.
+                    </div>
+                `;
+                contactForm.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            formStatus.innerHTML = `
+                <div class="form-error">
+                    ❌ Something went wrong. Please try again or email me directly.
+                </div>
+            `;
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = `
+                Send Message
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13" />
+                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+            `;
+        }
+    });
+}
 
 // ============================================
 // 7. TERMINAL TOGGLE
