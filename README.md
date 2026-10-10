@@ -1,28 +1,72 @@
-# Ankit Mahato - Cloud & Infrastructure Portfolio
+# Ankit Mahato | Cloud & Infrastructure Portfolio
 
-## 🚀 About This Portfolio
+A personal portfolio showcasing my professional background, IT support experience, technical skills, certifications, and hands-on projects as I work toward a career in Cloud Infrastructure and IT Operations.
 
-This is a premium digital resume experience for Ankit Mahato, an aspiring Cloud Infrastructure Engineer. Built with a dark, cinematic aesthetic inspired by Apple, Microsoft, GitHub, and Azure.
+## About Me
 
-### ✨ Features
+I am an MCA student at KIIT University with previous experience in enterprise IT support at Wipro.
 
-- **Hero Section** with terminal-inspired design
-- **Interactive Terminal** with 10+ commands
-- **Technical Dashboard** showing real progress
-- **GitHub Activity** and contribution graph
-- **Project Showcase** with detailed case studies
-- **Responsive Design** - works on all devices
-- **Glassmorphism UI** with Azure blue accents
-- **Smooth Animations** with GSAP
-- **Mobile-First** approach
+I am building my skills in Linux administration, Microsoft Azure, networking, SQL, Python, and automation, with a long-term goal of becoming a Cloud Infrastructure Engineer.
 
-### 🛠️ Technology Stack
+## Certifications
+
+- **Microsoft Certified: Azure Fundamentals (AZ-900)** — Completed
+- **Google IT Support Professional Certificate** — Completed
+
+## Technical Skills
+
+- **Cloud:** Microsoft Azure fundamentals
+- **Operating Systems:** Windows, Linux fundamentals
+- **IT Support:** SCCM, Bomgar, troubleshooting, software deployment
+- **Networking:** TCP/IP, DNS, DHCP fundamentals
+- **Databases:** SQL, joins, subqueries, window functions, normalization
+- **Programming & Automation:** Python and Bash scripting — learning
+- **Tools:** Git and GitHub
+
+*Skills reflect my current learning and practical experience; I continue to expand them through hands-on exercises and projects.*
+
+## Projects & Labs
+
+### SQL Practice Lab
+A structured project for practising SQL queries, joins, subqueries, window functions, and database design.
+
+- Repository: https://github.com/ankitmahato54/sql-practice-lab
+- Status: In progress
+
+More hands-on projects in Linux administration and Azure infrastructure will be added as they are completed and documented.
+
+## Portfolio Features
+
+- Responsive portfolio layout
+- Terminal-inspired introduction
+- Experience, skills, and certification sections
+- Project showcase
+- Contact form and professional profile links
+- JavaScript-powered interactions and animations
+
+## Technology Stack
 
 - HTML5
-- CSS3 (Tailwind CSS)
-- JavaScript (Vanilla)
-- GSAP (Animations)
-- Lucide Icons
-- GitHub Pages (Hosting)
+- CSS3
+- JavaScript
+- Tailwind CSS via CDN
+- GSAP and ScrollTrigger
+- Lucide icons
 
-### 📁 Project Structure
+## Run Locally
+
+1. Clone or download this repository.
+2. Open the project folder in your code editor.
+3. Open `index.html` in a browser, or use a local development server such as the VS Code Live Server extension.
+
+Some external libraries load from CDNs and therefore require an internet connection.
+
+## Connect
+
+- **GitHub:** https://github.com/ankitmahato54
+- **LinkedIn:** https://www.linkedin.com/in/ankitmahato1/
+- **Email:** ankitmahato54@gmail.com
+
+---
+
+Built and maintained by Ankit Mahato as part of my ongoing cloud and infrastructure learning journey.
